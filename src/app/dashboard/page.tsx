@@ -19,7 +19,7 @@ function page() {
   ];
   return (
     <>
-      <Grid container spacing={2} margin={1}>
+      <Grid container spacing={2} margin={1} sx={{ margin: 0 }}>
         <Grid item lg={3} sm={6} xs={12}>
           <Budget
             name="Budget"

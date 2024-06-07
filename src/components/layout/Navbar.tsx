@@ -14,7 +14,7 @@ import WindowIcon from "@mui/icons-material/Window";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import GroupIcon from "@mui/icons-material/Group";
 import FormatListBulletedIcon from "@mui/icons-material/FormatListBulleted";
-import SideNavBar from "./SideNavBar";
+import SideNavBar from "./sideNavBar";
 const Navbar = () => {
   const [open, setopen] = React.useState(false);
   const handleClick = () => {
@@ -27,7 +27,7 @@ const Navbar = () => {
         sx={{ justifyContent: "space-between", padding: 2 }}
       >
         <Stack direction="row" spacing={5}>
-          <IconButton onClick={() => handleClick()}>
+          <IconButton onClick={() => handleClick()} sx={{ padding: 0 }}>
             <FormatListBulletedIcon />
             <Drawer open={open}>{<SideNavBar />}</Drawer>
           </IconButton>

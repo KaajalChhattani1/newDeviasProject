@@ -16,11 +16,13 @@ interface NavItem {
 const SideNavBar = () => {
   let Color = "white";
   const pathname = usePathname();
+
   const renderNavItems = (navItems: NavItem[]): JSX.Element[] => {
     return navItems.map((item) => (
       <div key={item.key}>
-        {pathname == item.href ? (Color = "purple") : (Color = "inherit")}
-        <Box sx={{ backgroundColor: Color }}>
+        <Box
+          sx={{ backgroundColor: pathname == item.href ? "purple" : "inherit" }}
+        >
           <Link underline="none" color="inherit" href={item.href}>
             {item.title}
           </Link>
