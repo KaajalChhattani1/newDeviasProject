@@ -17,7 +17,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        {pathname != "/auth/sign-in" ? <Navbar /> : null}
+        {pathname != "/auth/signIn" ? <Navbar /> : null}
         {children}
       </body>
     </html>
