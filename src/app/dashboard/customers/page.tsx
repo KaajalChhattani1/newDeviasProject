@@ -75,6 +75,7 @@ interface User {
 async function userList(): Promise<User[]> {
   let response = await fetch(apiRoutes.childrenApi);
   let data = await response.json();
+
   return data.users;
 }
 
@@ -84,7 +85,7 @@ export default async function page() {
     <div>
       {users.map((item) => (
         <div key={item.id}>
-          {item.id}{" "}
+          {item.id}
           <Link href={`/dashboard/settings/${item.id}`}>{item.firstName}</Link>
         </div>
       ))}

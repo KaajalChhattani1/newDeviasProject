@@ -17,7 +17,7 @@ const SideNavBar = () => {
   let Color = "white";
   const pathname = usePathname();
 
-  const renderNavItems = (navItems: NavItem[]): JSX.Element[] => {
+  const RenderNavItems = (navItems: NavItem[]): JSX.Element[] => {
     return navItems.map((item) => (
       <div key={item.key}>
         <Box
@@ -51,7 +51,7 @@ const SideNavBar = () => {
         </Box>
         <Divider sx={{ borderColor: "white" }} />
         <Stack p={8} sx={{ padding: 1, height: 20 }}>
-          <Box component="nav">{renderNavItems(navItems)}</Box>
+          <Box component="nav">{RenderNavItems(navItems)}</Box>
 
           <div>
             <Typography>Need more features?</Typography>
