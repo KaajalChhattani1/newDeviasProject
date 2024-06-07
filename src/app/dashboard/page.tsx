@@ -1,12 +1,12 @@
 import Budget from "@/components/dashboard/budget";
-import Navbar from "@/components/layout/Navbar";
+import Navbar from "@/components/layout/navbar";
 import MonetizationOnIcon from "@mui/icons-material/MonetizationOn";
 import GroupIcon from "@mui/icons-material/Group";
 import FormatListBulletedIcon from "@mui/icons-material/FormatListBulleted";
 import React from "react";
 import { Grid } from "@mui/material";
-import Barchart from "@/components/dashboard/Barchart";
-import LatestProduct from "@/components/dashboard/LatestProduct";
+import Barchart from "@/components/dashboard/barChart";
+import LatestProduct from "@/components/dashboard/latestProduct";
 import dayjs from "dayjs";
 function page() {
   interface DataItem {

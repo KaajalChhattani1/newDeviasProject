@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { apiRoutes } from "@/apiRoutes";
 
 interface User {
   id: number;
@@ -72,7 +73,7 @@ interface User {
 }
 
 async function userList(): Promise<User[]> {
-  let response = await fetch("https://dummyjson.com/users");
+  let response = await fetch(apiRoutes.childrenApi);
   let data = await response.json();
   return data.users;
 }

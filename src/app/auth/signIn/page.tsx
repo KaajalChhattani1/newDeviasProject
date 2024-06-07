@@ -1,4 +1,4 @@
-import SignIn from "@/components/auth/sign-in-form";
+import SignIn from "@/components/auth/signInForm";
 import React from "react";
 
 function page() {
