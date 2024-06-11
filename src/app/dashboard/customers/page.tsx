@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { apiRoutes } from "@/apiRoutes";
+import DeleteUser from "./deleteUser";
 
 interface User {
   id: number;
@@ -86,7 +87,10 @@ export default async function page() {
       {users.map((item) => (
         <div key={item.id}>
           {item.id}
-          <Link href={`/dashboard/settings/${item.id}`}>{item.firstName}</Link>
+          <Link href={`/dashboard/settings/${item.id}`}>
+            {item.firstName + "        "}
+          </Link>
+          <DeleteUser id={item.id} />
         </div>
       ))}
     </div>

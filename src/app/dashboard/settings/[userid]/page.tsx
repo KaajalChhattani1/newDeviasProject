@@ -1,19 +1,81 @@
-import React from "react";
+"use client";
+import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import { Box, TextField } from "@mui/material";
+import { Button } from "react-bootstrap";
 
-async function UserList(id) {
-  let response = await fetch(`https://dummyjson.com/users/${id}`);
+function Page({ params }) {
+  const id = params.userid;
+  const [firstName, setName] = useState("");
+  const [age, setAge] = useState("");
+  const [email, setEmail] = useState("");
 
-  let data = await response.json();
-  console.log("DATA======", data.firstName);
-  return data;
+  const addMe = async () => {
+    console.log(firstName, age, email);
+    let response = await fetch(`https://dummyjson.com/users/${id}`);
+
+    response = await response.json();
+    setName(response.firstName);
+    setAge(response.age);
+    setEmail(response.email);
+    console.log(response);
+  };
+  useEffect(() => {
+    addMe();
+  }, []);
+
+  const updateMe = async () => {
+    console.log(firstName, age, email);
+
+    let result = await fetch(`https://dummyjson.com/users/${id}`, {
+      method: "PUT",
+
+      body: JSON.stringify({ firstName, age, email }),
+    });
+    result = await result.json();
+    console.log(result);
+  };
+
+  return (
+    <div>
+      <div>Add New User</div>
+      <Box>
+        <TextField
+          sx={{ border: 1 }}
+          type="text"
+          value={firstName}
+          label="Enter name"
+          onChange={(e) => {
+            setName(e.target.value);
+          }}
+        />
+      </Box>
+      <Box>
+        <TextField
+          sx={{ border: 1 }}
+          type="text"
+          value={age}
+          label="Enter age"
+          onChange={(e) => {
+            setAge(e.target.value);
+          }}
+        />
+      </Box>
+      <Box>
+        <TextField
+          sx={{ border: 1 }}
+          type="text"
+          value={email}
+          label="Enter email"
+          onChange={(e) => {
+            setEmail(e.target.value);
+          }}
+        />
+      </Box>
+      <Button onClick={updateMe}>Press me</Button>
+    </div>
+  );
 }
 
-async function page({ params }) {
-  const data = await UserList(params.userid);
-  return <div>{"Hello  " + data.firstName + "   " + data.lastName}</div>;
-  console.log(data.firstName);
-}
-
-export default page;
+export default Page;

@@ -14,3 +14,27 @@ export function GET(response, content) {
     { status: 200 }
   );
 }
+
+export async function PUT(request, content) {
+  let payload = await request.json();
+  console.log(payload);
+
+  payload.id = content.params.id;
+  console.log("Payload" + payload);
+  console.log("Payload2" + content);
+  if (!payload.id || !payload.firstName || !payload.age || !payload.email) {
+    return NextResponse.json({ result: payload, success: false });
+  }
+  return NextResponse.json({ result: payload, success: true });
+}
+export function DELETE(request, content) {
+  let id = content.params.id;
+  if (id) {
+    return NextResponse.json({ result: "User delete", success: true });
+  } else {
+    return NextResponse.json({
+      result: "User not  deleted as not valid",
+      success: false,
+    });
+  }
+}
