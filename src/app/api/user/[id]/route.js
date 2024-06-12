@@ -1,5 +1,5 @@
-import { user } from "@/components/layout/data";
 import { NextResponse } from "next/server";
+import { user } from "../../../../components/layout/data";
 
 export function GET(response, content) {
   const data = user.filter((item) => {

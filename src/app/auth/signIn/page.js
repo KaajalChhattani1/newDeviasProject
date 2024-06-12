@@ -1,5 +1,5 @@
-import SignIn from "@/components/auth/signInForm";
 import React from "react";
+import SignIn from "../../../components/auth/signInForm";
 
 function page() {
   return <SignIn />;

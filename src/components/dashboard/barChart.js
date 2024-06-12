@@ -1,21 +1,19 @@
 "use client";
-import Chart from "react-apexcharts";
+
 import React, { useState } from "react";
-import { Card } from "react-bootstrap";
+
 import ReactApexChart from "react-apexcharts";
 import {
+  Card,
   CardActions,
   CardHeader,
   Divider,
   Stack,
   Typography,
+  Button,
 } from "@mui/material";
 
-export interface dataset {
-  chartSeries: { name: string; data: number[] }[];
-}
-
-function Barchart({ chartSeries }: dataset): React.JSX.Element {
+function Barchart({ chartSeries }) {
   const [options] = useState({
     chart: {
       id: "basic-bar",
@@ -56,9 +54,9 @@ function Barchart({ chartSeries }: dataset): React.JSX.Element {
       <Divider />
       <Stack direction={"row-reverse"}>
         <CardActions>
-          <Typography variant="body1" component="button">
-            View All
-          </Typography>
+          <Button variant="subtitle1" size="small">
+            {`Overview ->`}
+          </Button>
         </CardActions>
       </Stack>
     </Card>

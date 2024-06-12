@@ -5,48 +5,26 @@ import MonetizationOnIcon from "@mui/icons-material/MonetizationOn";
 import ArrowUpwardIcon from "@mui/icons-material/ArrowUpward";
 import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
 
-interface BudgetProps {
-  name: string;
-  value: string;
-  diff: "up" | "down"; // Assuming diff can only be 'up' or 'down'
-  image: ReactNode; // ReactNode can accept any valid JSX
-  diffvalue: string; // Assuming diffvalue is a number
-}
-const Budget = ({
-  name,
-  value,
-  diff,
-  image,
-  diffvalue,
-}: BudgetProps): JSX.Element => {
+const Budget = ({ name, value, diff, image, diffvalue, color }) => {
   return (
-    <Card sx={{ borderWidth: 1, borderRadius: 6 }}>
+    <Card sx={{ borderWidth: 1, borderRadius: 6, height: 160 }}>
       <CardContent>
         <Stack direction={"row"} justifyContent={"space-between"}>
           <div>
             <Typography variant="overline">{name}</Typography>
             <Typography variant="h4">{value}</Typography>
           </div>
-          <div>
-            <Avatar
-              sx={{
-                backgroundColor: "purple",
-                height: "56px",
-                width: "56px",
-              }}
-            >
-              {image}
-            </Avatar>
-          </div>
+
+          <Avatar sx={{ backgroundColor: { color } }}>{image}</Avatar>
         </Stack>
 
         {diff == "up" ? (
-          <Typography color={"green"}>
+          <Typography color={"green"} marginTop={2}>
             <ArrowUpwardIcon />
             {diffvalue}
           </Typography>
         ) : (
-          <Typography color={"red"}>
+          <Typography color={"red"} marginTop={2}>
             <ArrowDownwardIcon />
             {diffvalue}
           </Typography>

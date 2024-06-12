@@ -7,7 +7,7 @@ function Page() {
   const [age, setAge] = useState("");
   const [email, setEmail] = useState("");
 
-  const addMe = async () => {
+  const AddMe = async () => {
     console.log(name, age, email);
     let response = await fetch("http://localhost:3001/api/user", {
       method: "POST",
@@ -51,7 +51,7 @@ function Page() {
           }}
         />
       </Box>
-      <Button onClick={addMe}>Press me</Button>
+      <Button onClick={AddMe}>Press me</Button>
     </div>
   );
 }
