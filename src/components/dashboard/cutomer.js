@@ -1,9 +1,11 @@
+"use client";
 import AddRoundedIcon from "@mui/icons-material/AddRounded";
 import PublishIcon from "@mui/icons-material/Publish";
 import GetAppIcon from "@mui/icons-material/GetApp";
 import SearchIcon from "@mui/icons-material/Search";
 import dayjs from "dayjs";
 import {
+  Avatar,
   Box,
   Button,
   Card,
@@ -11,18 +13,21 @@ import {
   InputAdornment,
   Paper,
   Stack,
+  Table,
   TableBody,
   TableCell,
   TableContainer,
   TableFooter,
   TableHead,
+  TablePagination,
   TableRow,
   TextField,
   Typography,
 } from "@mui/material";
-import { Table } from "react-bootstrap";
-import { neonBlue } from "../../color";
 
+import { neonBlue } from "../../color";
+import { useState } from "react";
+import TopContainer from "../layout/topContainer";
 // async function userList() {
 //   let response = await fetch(apiRoutes.childrenApi);
 //   let data = await response.json();
@@ -31,107 +36,103 @@ import { neonBlue } from "../../color";
 // }
 
 export default function Customer({ customer }) {
+  const [rows, rowchange] = useState([]);
+  const [page, pageChange] = useState(0);
+  const [rowperpage, rowperpagechange] = useState(5);
+
+  const handleRowsPerPage = (event) => {
+    console.log("handleRowsPerPage");
+    rowperpagechange(+event.target.value);
+    pageChange(0);
+  };
+
+  const handlePageChange = (event, newpage) => {
+    console.log(newpage, event);
+    pageChange(newpage);
+  };
+
+  const setCheckedParent = () => {
+    customer.map((item) => {
+      setchecked[1];
+    });
+  };
+  const onSelectOneClick = (e) => {
+    console.log(e);
+  };
   return (
     <Stack margin={4}>
-      <Stack direction={"row"} justifyContent={"space-between"}>
-        <Typography variant={"h4"} fontWeight={300}>
-          Customers
-        </Typography>
-        <Button
-          sx={{
-            backgroundColor: neonBlue[400],
-            color: "whitesmoke",
-            width: "26",
-          }}
-          startIcon={<AddRoundedIcon />}
-        >
-          Add
-        </Button>
-      </Stack>
-      <Stack direction={"row"}>
-        <Button
-          sx={{ color: "inherit", size: "20", fontWeight: 300, marginRight: 2 }}
-          startIcon={<PublishIcon fontWeight={200} />}
-        >
-          Import
-        </Button>
-        <Button
-          sx={{ color: "inherit", size: "20", fontWeight: 300 }}
-          startIcon={<GetAppIcon />}
-        >
-          Export
-        </Button>
-      </Stack>
-      <Paper
-        elevation={3}
-        width={"100%"}
-        sx={{
-          height: 90,
-
-          alignContent: "center",
-          justifyItems: "center",
-          borderRadius: 4,
-          marginTop: 5,
-          marginBottom: 2,
-        }}
-      >
-        <TextField
-          placeholder="Search Customers"
-          sx={{
-            m: 1,
-            width: "70%",
-            alignContent: "center",
-            justifyItems: "center",
-            borderRadius: 4,
-          }}
-          InputProps={{
-            startAdornment: (
-              <InputAdornment position="start">
-                <SearchIcon />
-              </InputAdornment>
-            ),
-          }}
-        />
-      </Paper>
+      <TopContainer name="Customer" />
       <Card>
-        <TableContainer component="Paper">
-          <Table sx={{ minWidth: "600px" }}>
-            <TableHead>
-              <TableRow>
-                <TableCell>
-                  <Checkbox></Checkbox>
-                </TableCell>
-                <TableCell>Name</TableCell>
-                <TableCell>Email</TableCell>
-                <TableCell>Location</TableCell>
-                <TableCell>Phone</TableCell>
-                <TableCell>SignedUp</TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {customer.map((item) => {
-                return (
-                  <TableRow key={item.id}>
-                    <TableCell>
-                      <Checkbox />
-                    </TableCell>
-                    <TableCell align="left"> {item.name}</TableCell>
-                    <TableCell align="left"> {item.email}</TableCell>
+        <Box>
+          <TableContainer component="Paper">
+            <Table sx={{ minWidth: "600px" }}>
+              <TableHead>
+                <TableRow>
+                  <TableCell>
+                    <Checkbox
+                    // label="Parent"
+                    // checked={setCheck}
+                    // indeterminate={checked[0] !== checked[1]}
+                    // onChange={handleChange1}
+                    />
+                  </TableCell>
+                  <TableCell>Name</TableCell>
+                  <TableCell>Email</TableCell>
+                  <TableCell>Location</TableCell>
+                  <TableCell>Phone</TableCell>
+                  <TableCell>SignedUp</TableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {customer &&
+                  customer
+                    .slice(page * rowperpage, page * rowperpage + rowperpage)
+                    .map((item) => {
+                      return (
+                        <TableRow key={item.id}>
+                          <TableCell>
+                            <Checkbox
+                            // label={item.id}
 
-                    <TableCell align="left">
-                      {item.address.city},{item.address.state}
-                      {item.address.country}
-                    </TableCell>
-                    <TableCell align="left">{item.phone}</TableCell>
-                    <TableCell align="left">
-                      {dayjs(item.createdAt).format("MMM D, YYYY")}
-                    </TableCell>
-                  </TableRow>
-                );
-              })}
-            </TableBody>
-          </Table>
-        </TableContainer>
+                            // onhandleChange={onSelectOneClick}
+                            />
+                          </TableCell>
+                          <TableCell align="left">
+                            <Stack
+                              direction="row"
+                              spacing={1}
+                              alignItems={"center"}
+                            >
+                              <Avatar src={item.avatar} />
+                              {"  " + item.name}
+                            </Stack>
+                          </TableCell>
+                          <TableCell align="left"> {item.email}</TableCell>
+
+                          <TableCell align="left">
+                            {item.address.city},{item.address.state}
+                            {item.address.country}
+                          </TableCell>
+                          <TableCell align="left">{item.phone}</TableCell>
+                          <TableCell align="left">
+                            {dayjs(item.createdAt).format("MMM D, YYYY")}
+                          </TableCell>
+                        </TableRow>
+                      );
+                    })}
+              </TableBody>
+            </Table>
+          </TableContainer>
+          <TablePagination
+            rowsPerPageOptions={[2, 6, 10]}
+            page={page}
+            rowsPerPage={rowperpage}
+            component="div"
+            onPageChange={handlePageChange}
+            onRowsPerPageChange={handleRowsPerPage}
+            count={customer.length}
+          />
+        </Box>
       </Card>
       {/* let users = await userList();
     <div>
