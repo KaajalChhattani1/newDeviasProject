@@ -1,3 +1,4 @@
+"use client";
 import Budget from "../../components/dashboard/budget";
 
 import MonetizationOnIcon from "@mui/icons-material/MonetizationOn";

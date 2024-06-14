@@ -127,9 +127,7 @@ function account() {
               displayEmpty
               fullWidth
             >
-              <MenuItem value="" disabled>
-                {" "}
-              </MenuItem>
+              <MenuItem value="" disabled></MenuItem>
               <MenuItem value="option1">Alabama</MenuItem>
               <MenuItem value="option2">New York</MenuItem>
               <MenuItem value="option3">San Francisco</MenuItem>

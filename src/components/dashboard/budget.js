@@ -1,7 +1,7 @@
 import React, { ReactNode } from "react";
 import Card from "@mui/material/Card";
 import { Avatar, CardContent, Stack, Typography } from "@mui/material";
-import MonetizationOnIcon from "@mui/icons-material/MonetizationOn";
+
 import ArrowUpwardIcon from "@mui/icons-material/ArrowUpward";
 import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
 
