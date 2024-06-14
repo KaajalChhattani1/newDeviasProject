@@ -1,4 +1,5 @@
 "use client";
+import PopoverNav from "./popoverNav";
 import * as React from "react";
 import {
   AppBar,
@@ -7,6 +8,7 @@ import {
   Divider,
   Drawer,
   IconButton,
+  Popover,
   Stack,
   Toolbar,
   Typography,
@@ -22,6 +24,17 @@ const Navbar = () => {
   const handleClick = () => {
     setopen(!open);
   };
+
+  const [anchorEl, setAnchorEl] = React.useState(null);
+
+  const handleClickpop = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClosepop = () => {
+    setAnchorEl(null);
+  };
+  const openpop = Boolean(anchorEl);
+
   return (
     <Box component="header">
       <Stack
@@ -49,7 +62,7 @@ const Navbar = () => {
           <GroupIcon />
           <NotificationsIcon />
           <Avatar
-            src="../vecteezy_woman-face-expression-clipart-design-illustration_9397892.png"
+            src="/assets/avatar.png"
             sx={{
               cursor: "pointer",
               padding: 0,
@@ -57,7 +70,23 @@ const Navbar = () => {
               width: 35,
               marginTop: 0,
             }}
+            onClick={handleClickpop}
           />
+          <Popover
+            open={openpop}
+            anchorEl={anchorEl}
+            onClose={handleClosepop}
+            anchorOrigin={{
+              vertical: "bottom",
+              horizontal: "center",
+            }}
+            transformOrigin={{
+              vertical: "top",
+              horizontal: "center",
+            }}
+          >
+            <PopoverNav onClose={handleClosepop} />
+          </Popover>
         </Stack>
       </Stack>
       <Divider sx={{ marginBottom: 5 }} />

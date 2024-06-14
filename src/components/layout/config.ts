@@ -18,7 +18,12 @@ export const navItems = [
     href: "/dashboard/settings",
     icon: "gear-six",
   },
-  { key: "account", title: "Account", href: "/auth/sign-in", icon: "user" },
+  {
+    key: "account",
+    title: "Account",
+    href: "/dashboard/account",
+    icon: "user",
+  },
   {
     key: "error",
     title: "Error",

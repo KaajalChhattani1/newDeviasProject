@@ -13,9 +13,10 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import { useRouter } from "next/navigation";
 import { Stack } from "@mui/material";
+import { neonBlue } from "../../color";
 
 export default function SignIn() {
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     console.log({
@@ -31,9 +32,12 @@ export default function SignIn() {
         <Typography variant={"h4"} textAlign={"left"}>
           Sign In
         </Typography>
-        <Link href="#" variant="body2">
-          {`Don't have an account ?  SignUp`}
-        </Link>
+        <Typography variant="body2">
+          Don't have an account ?
+          <Link href="#" variant="body2" sx={{ color: neonBlue[400] }}>
+            {` SignUp`}
+          </Link>
+        </Typography>
 
         <Box
           component="form"
@@ -41,39 +45,42 @@ export default function SignIn() {
           sx={{ mt: 1, width: "100%" }}
         >
           <TextField
-            sx={{ width: "100%" }}
+            sx={{ width: "100%", borderRadius: 4 }}
             margin="normal"
             id="email"
             label="Email Address"
             name="email"
             autoComplete="email"
             autoFocus
+            defaultValue="Sofia"
           />
         </Box>
         <Box
           component="form"
           onSubmit={handleSubmit}
           sx={{ mt: 1, width: "100%" }}
+          borderRadius={4}
         >
           <TextField
-            sx={{ width: "100%" }}
+            sx={{ width: "100%", borderRadius: 6 }}
             margin="normal"
             name="password"
             label="Password"
             type="password"
             id="password"
             autoComplete="current-password"
+            defaultValue="Secret 1"
           />
         </Box>
 
-        <Link href="#" variant="body2">
+        <Link href="#" variant="body2" sx={{ color: neonBlue[400] }}>
           Forgot Password ?
         </Link>
         <Button
           type="submit"
           sx={{
             alignSelf: "center",
-            backgroundColor: "purple",
+            backgroundColor: neonBlue[400],
             width: "100%",
             height: 50,
             berderRadius: 4,

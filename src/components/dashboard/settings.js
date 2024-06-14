@@ -50,7 +50,7 @@ function settings() {
         <Typography sx={{ margin: 2, marginBottom: 4 }} variant="h4">
           Settings
         </Typography>
-        <Card sx={{ margin: 2, height: "50%", borderRadius: 4 }}>
+        <Card sx={{ margin: 2, height: "50%", borderRadius: 4, padding: 2 }}>
           <CardHeader
             subheader="Manage the notifications"
             title="Notifications"
@@ -108,11 +108,11 @@ function settings() {
             </Button>
           </CardActions>
         </Card>
-        <Card sx={{ margin: 2, height: "50%", borderRadius: 4 }}>
+        <Card sx={{ margin: 2, height: "50%", borderRadius: 4, padding: 2 }}>
           <CardHeader subheader="Update password" title="Password" />
           <Stack spacing={1}>
-            <TextField label="Password" />
-            <TextField label="Confirm Password" />
+            <TextField sx={{ borderRadius: 2 }} label="Password" />
+            <TextField sx={{ borderRadius: 2 }} label="Confirm Password" />
             <Divider />
             <CardActions sx={{ justifyContent: "flex-end" }}>
               <Button
