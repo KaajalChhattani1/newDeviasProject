@@ -15,8 +15,8 @@ function popoverNav({ onClose }) {
     onClose();
   };
   return (
-    <Box sx={{ p: "16px 20px ", border: 0, borderStyle: "none" }}>
-      <Card>
+    <Box sx={{ p: "16px 20px ", border: 0, borderStyle: "none", elevation: 0 }}>
+      <Card sx={{ elevation: 0 }}>
         <Stack>
           <Typography variant="subtitle1">Sofias Rivers</Typography>
           <Typography>sofia.rivers@devias.com</Typography>

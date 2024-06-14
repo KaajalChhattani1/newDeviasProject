@@ -1,9 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
-import Link from "next/link";
-import { Box, TextField } from "@mui/material";
-import { Button } from "react-bootstrap";
+
+import { Box, TextField, Button } from "@mui/material";
 
 function Page({ params }) {
   const id = params.userid;

@@ -10,10 +10,10 @@ import {
   Image,
   Avatar,
   ListItemAvatar,
+  Button,
 } from "@mui/material";
 import dayjs from "dayjs";
 import Card from "@mui/material/Card";
-import { Button } from "react-bootstrap";
 
 export function LatestProduct({ products = [] }) {
   return (

@@ -18,7 +18,14 @@ function page() {
     { name: "Last year", data: [12, 11, 4, 6, 2, 9, 9, 10, 11, 12, 13, 13] },
   ];
   return (
-    <div style={{ backgroundColor: nevada[50] }}>
+    <div
+      style={{
+        backgroundColor: nevada[50],
+        paddingBottom: 20,
+        paddingRight: 16,
+        paddingLeft: 16,
+      }}
+    >
       <Grid container spacing={2} sx={{ margin: 0, width: "98%" }}>
         <Grid item lg={3} sm={6} xs={12}>
           <Budget
