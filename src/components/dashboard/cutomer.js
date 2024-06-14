@@ -23,6 +23,7 @@ import {
   TableRow,
   TextField,
   Typography,
+  fabClasses,
 } from "@mui/material";
 
 import { neonBlue } from "../../color";
@@ -39,6 +40,8 @@ export default function Customer({ customer }) {
   const [rows, rowchange] = useState([]);
   const [page, pageChange] = useState(0);
   const [rowperpage, rowperpagechange] = useState(5);
+  const [selectAll, setSelectAll] = useState(false);
+  const [selectOne, setSelectOne] = useState(false);
 
   const handleRowsPerPage = (event) => {
     console.log("handleRowsPerPage");
@@ -71,9 +74,10 @@ export default function Customer({ customer }) {
                   <TableCell>
                     <Checkbox
                     // label="Parent"
-                    // checked={setCheck}
-                    // indeterminate={checked[0] !== checked[1]}
-                    // onChange={handleChange1}
+                    // onChange={(e) => {
+                    //   if (selectAll) { e.target.checked == true }
+                    //   else if (e.target.checked == true) { selectOne = true , selectAll=true }
+                    // }}
                     />
                   </TableCell>
                   <TableCell>Name</TableCell>
@@ -92,9 +96,11 @@ export default function Customer({ customer }) {
                         <TableRow key={item.id}>
                           <TableCell>
                             <Checkbox
-                            // label={item.id}
 
-                            // onhandleChange={onSelectOneClick}
+                            // onChange={(e) => {
+                            //   if (selectOne) { e.target.checked == true }
+                            //   else if (e.target.checked == true) { selectOne = true }
+                            // }}/>
                             />
                           </TableCell>
                           <TableCell align="left">

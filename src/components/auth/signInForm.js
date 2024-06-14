@@ -16,6 +16,10 @@ import { Stack } from "@mui/material";
 import { neonBlue } from "../../color";
 
 export default function SignIn() {
+  const [toggle, setToggle] = React.useState(false);
+  const handletoggle = () => {
+    setToggle(!toggle);
+  };
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -66,11 +70,18 @@ export default function SignIn() {
             margin="normal"
             name="password"
             label="Password"
-            type="password"
+            type={toggle == true ? "text" : "password"}
             id="password"
             autoComplete="current-password"
             defaultValue="Secret 1"
           />
+          <Typography
+            variant="subtitle1"
+            container="button"
+            onClick={handletoggle}
+          >
+            show
+          </Typography>
         </Box>
 
         <Link href="#" variant="body2" sx={{ color: neonBlue[400] }}>

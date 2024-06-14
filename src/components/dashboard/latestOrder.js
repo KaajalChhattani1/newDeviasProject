@@ -34,7 +34,7 @@ function latestOrder({ orders }) {
           <TableBody>
             {orders.map((item) => {
               return (
-                <TableRow key={item.id}>
+                <TableRow hover key={item.id}>
                   <TableCell align="right">{item.id}</TableCell>
                   <TableCell align="right">{item.customer.name}</TableCell>
                   <TableCell align="right">
@@ -49,6 +49,7 @@ function latestOrder({ orders }) {
                             : item.status == "pending"
                             ? "orange"
                             : "red",
+                        color: "white",
                       }}
                       label={item.status}
                     />
