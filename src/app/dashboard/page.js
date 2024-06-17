@@ -1,21 +1,45 @@
-"use client";
 import Budget from "../../components/dashboard/budget";
 
 import MonetizationOnIcon from "@mui/icons-material/MonetizationOn";
 import GroupIcon from "@mui/icons-material/Group";
 import FormatListBulletedIcon from "@mui/icons-material/FormatListBulleted";
 import React from "react";
-import { Divider, Grid } from "@mui/material";
-import Barchart from "../../components/dashboard/barChart";
+import { Grid } from "@mui/material";
 
 import dayjs from "dayjs";
-import LatestProduct from "../../components/dashboard/latestProduct";
+
 import { california, kepple, neonBlue, nevada } from "../../color";
-import Traffic from "../../components/dashboard/trafficPieChart";
-import LatestOrders from "../../components/dashboard/latestOrder";
+
+// pages/index.js
+import dynamic from "next/dynamic";
+
+const LatestProduct = dynamic(
+  () => import("../../components/dashboard/latestProduct"),
+  {
+    ssr: false,
+  }
+);
+const LatestOrders = dynamic(
+  () => import("../../components/dashboard/latestOrder"),
+  {
+    ssr: false,
+  }
+);
+const Traffic = dynamic(
+  () => import("../../components/dashboard/trafficPieChart"),
+  {
+    ssr: false,
+  }
+);
+const Barchart = dynamic(() => import("../../components/dashboard/barChart"), {
+  ssr: false,
+});
 function page() {
   const dataset = [
-    { name: "This year", data: [18, 16, 5, 8, 3, 14, 14, 16, 17, 19, 18, 20] },
+    {
+      name: "This year",
+      data: [18, 16, 5, 8, 3, 14, 14, 16, 17, 19, 18, 20],
+    },
     { name: "Last year", data: [12, 11, 4, 6, 2, 9, 9, 10, 11, 12, 13, 13] },
   ];
   return (

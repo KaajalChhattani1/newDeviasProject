@@ -1,4 +1,4 @@
-import React, { ReactNode } from "react";
+import React from "react";
 import Card from "@mui/material/Card";
 import { Avatar, CardContent, Stack, Typography } from "@mui/material";
 
