@@ -23,7 +23,7 @@ const theme = createTheme({
     MuiInputLabel: {
       styleOverrides: {
         focused: {
-          color: neonBlue[400], // Change to the color you want when focused
+          color: neonBlue[400],
         },
       },
     },
@@ -31,7 +31,7 @@ const theme = createTheme({
       styleOverrides: {
         root: {
           "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
-            borderColor: neonBlue[400], // Change to the color you want when focused
+            borderColor: neonBlue[400],
           },
         },
       },

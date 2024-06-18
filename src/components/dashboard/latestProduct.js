@@ -12,7 +12,7 @@ import {
   ListItemAvatar,
   Button,
 } from "@mui/material";
-import dayjs from "dayjs";
+
 import Card from "@mui/material/Card";
 
 export function LatestProduct({ products = [] }) {

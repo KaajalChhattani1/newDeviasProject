@@ -42,6 +42,7 @@ export default function Customer({ customer }) {
   const [rowperpage, rowperpagechange] = useState(5);
   const [selectAll, setSelectAll] = useState(false);
   const [selectOne, setSelectOne] = useState(false);
+  let [count, setCount] = useState(0);
 
   const handleRowsPerPage = (event) => {
     console.log("handleRowsPerPage");
@@ -75,8 +76,9 @@ export default function Customer({ customer }) {
                     <Checkbox
                     // label="Parent"
                     // onChange={(e) => {
-                    //   if (selectAll) { e.target.checked == true }
-                    //   else if (e.target.checked == true) { selectOne = true , selectAll=true }
+                    //   if (count == customer.length) {
+                    //     e.target.checked == true;
+                    //   }
                     // }}
                     />
                   </TableCell>
@@ -96,11 +98,11 @@ export default function Customer({ customer }) {
                         <TableRow key={item.id}>
                           <TableCell>
                             <Checkbox
-
-                            // onChange={(e) => {
-                            //   if (selectOne) { e.target.checked == true }
-                            //   else if (e.target.checked == true) { selectOne = true }
-                            // }}/>
+                              onChange={(e) => {
+                                if (e.target.checked == true) setCount(count++);
+                                if (e.target.checked == false)
+                                  if (count > 0) setCount(count--);
+                              }}
                             />
                           </TableCell>
                           <TableCell align="left">

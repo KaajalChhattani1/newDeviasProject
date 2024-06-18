@@ -144,6 +144,6 @@ const customers = [
   },
 ];
 
-export default async function page() {
+export default function page() {
   return <Customer customer={customers} />;
 }
